@@ -88,39 +88,72 @@
 
 
 
-int main()
+//int main()
+//{
+//	int rows = 2;
+//	int cols = 3;
+//
+//	int** arr = new int* [rows];
+//	for (int i{ 0 }; i < rows; ++i)
+//	{
+//		*(arr + i) = new int[cols];
+//		// >>> EQUALS <<<
+//		// arr[i] = new int[cols];
+//	}
+//
+//	for (int i{ 0 }; i < rows; ++i)
+//	{
+//		int* rowsAddr = *(arr + i);
+//		for (int j{ 0 }; j < cols; ++j)
+//		{
+//			*(rowsAddr + j) = 8;
+//		}
+//	}
+//
+//	for (int i{ 0 }; i < rows; ++i)
+//	{
+//		for (int j{ 0 }; j < cols; ++j)
+//		{
+//			// std::cout << *(*(arr + i) + j) << ' ';
+//			// >>> EQUALS <<<
+//			std::cout << arr[i][j] << ' ';
+//		}
+//		std::cout << '\n';
+//	}
+//}
+
+
+//int* func() 
+//{
+//	/*int a = 4;
+//	int* ptr = &a;*/
+//
+//	int* ptr = new int{ 4 };
+//
+//	return ptr;
+//}
+//
+//int main()
+//{
+//	int* ptr = func();
+//
+//	std::cout << *ptr;
+//
+//	return 0;
+//}
+
+
+
+
+
+void func()
 {
-	int rows = 2;
-	int cols = 3;
+	int* ptr = new int{ 56 };
 
-	int** arr = new int* [rows];
-	for (int i{ 0 }; i < rows; ++i)
-	{
-		*(arr + i) = new int[cols];
-		// >>> EQUALS <<<
-		// arr[i] = new int[cols];
-	}
-
-	for (int i{ 0 }; i < rows; ++i)
-	{
-		int* rowsAddr = *(arr + i);
-		for (int j{ 0 }; j < cols; ++j)
-		{
-			*(rowsAddr + j) = 8;
-		}
-	}
-
-	for (int i{ 0 }; i < rows; ++i)
-	{
-		for (int j{ 0 }; j < cols; ++j)
-		{
-			// std::cout << *(*(arr + i) + j) << ' ';
-			// >>> EQUALS <<<
-			std::cout << arr[i][j] << ' ';
-		}
-		std::cout << '\n';
-	}
+	delete ptr;
 }
 
-
-
+int main()
+{
+	func();
+}
