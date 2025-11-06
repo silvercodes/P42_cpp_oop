@@ -1,8 +1,8 @@
 #include <iostream>
 
-#define PI 3.14
-
-#define FLAG_2
+//#define PI 3.14
+//
+//#define FLAG_2
 
 //#ifdef FLAG_1
 //
@@ -31,7 +31,10 @@
 
 // #define CONSTRUCT
 // #define CLASS_IN_CLASS
-#define PRACTICE_1
+// #define PRACTICE_1
+// #define INITIALIZATORS
+// #define CTOR_DELEGATION
+#define DESTRUCTOR
 
 #ifdef CONSTRUCT
 
@@ -239,9 +242,203 @@ int main()
 
 }
 
-
-
-
 #endif // PRACTICE_1
+
+#ifdef INITIALIZATORS
+
+//class Calc
+//{
+//private:
+//	const double PI = 3.14;
+//	std::string& title;
+//public:
+//	Calc()
+//	{
+//		PI = 3.14;		// ERROR
+//	}
+//};
+
+
+// -------------------
+
+//class Point
+//{
+//private:
+//	int x;
+//	int y;
+//	const std::string title;
+//	int statArr[3];
+//	int dynCount;
+//	int* dynArr;
+//
+//public:
+//	// случай без параметров
+//	Point() :
+//		x{},
+//		y{},
+//		title {"no_title"},
+//		statArr { 4, 5, 6 },
+//		dynCount { 3 },
+//		dynArr{ new int[3] {1, 2, 3} }
+//	{}
+//
+//	// случай с параметрами
+//	Point(int a, int b, std::string t, int dc):
+//		x{ a },
+//		y{ b },
+//		title{ t },
+//		statArr{ 4, 5, 6 },
+//		dynCount{ dc },
+//		dynArr{ new int[dc] {} }
+//	{}
+//
+//	void render()
+//	{
+//		std::cout << x << '\t' << y << '\t' << title << '\n';
+//		std::cout << "statArr\n";
+//		for (int i{}; i < 3; ++i)
+//			std::cout << statArr[i] << ' ';
+//	}
+//};
+//
+//int main()
+//{
+//	Point p{};
+//	p.render();
+//
+//	Point b{ 3, 4, "B", 10 };
+//	b.render();
+//}
+
+// ------- 
+
+//class Role
+//{
+//private:
+//	int id;
+//	std::string title;
+//
+//public:
+//	Role(int id, std::string title = "no_title") :
+//		id{ id }, title{ title }
+//	{}
+//};
+//
+//class User
+//{
+//private:
+//	int id;
+//	std::string email;
+//	Role role;
+//
+//public:
+//	User(int id, std::string email, int roleId, std::string roleTitle):
+//		id{ id },
+//		email{ email },
+//		role{ roleId, roleTitle }
+//	{}
+//};
+
+// -----------
+//class Point
+//{
+//private:
+//	int x{ 1 };	// Значение по-умолчанию (запасной вариант инициализации)
+//	int y{ 1 }; // Значение по-умолчанию (запасной вариант инициализации)
+//	const int radius;
+//public:
+//	Point(int a, int b, int r = 1):
+//		x{a},
+//		y{b},
+//		radius{r}
+//	{}
+//	Point(int r):
+//		radius{r}
+//	{ }
+//	void render()
+//	{
+//		std::cout << x << ' ' << y << '\n';
+//	}
+//};
+//
+//int main()
+//{
+//	Point a{ 10 };
+//	a.render();
+//}
+
+#endif // INITIALIZATORS
+
+#ifdef CTOR_DELEGATION
+
+//class User
+//{
+//private:
+//	int id;
+//	std::string email;
+//
+//public:
+//	User(int newId, std::string email) :
+//		email{ email }
+//	{
+//		id = newId < 0 ? 0 : newId;
+//	}
+//
+//	User(std::string email):
+//		User{ 102, email }
+//	{}
+//};
+//
+//int main()
+//{
+//	User("vasia@mail.com");
+//}
+
+#endif // CTOR_DELEGATION
+
+#ifdef DESTRUCTOR
+
+class Student
+{
+private:
+	int id;
+	int* grades;
+	int gradesCount;
+
+public:
+	Student(int id, int gCount):
+		id{id},
+		gradesCount{gCount},
+		grades{ new int[gCount] }
+	{}
+	/*void clearMemeory()
+	{
+		if (grades != nullptr)
+			delete[] grades;
+	}*/
+	~Student()
+	{
+		if (grades != nullptr)
+			delete[] grades;
+		std::cout << "Student dtor";
+	}
+};
+
+void func()
+{
+	Student s{ 101, 1000 };
+	//
+	//
+	// s.clearMemeory();
+}
+
+int main()
+{
+	func();
+
+	return 0;
+}
+
+#endif // DESTRUCTOR
 
 
