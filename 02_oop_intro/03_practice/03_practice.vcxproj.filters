@@ -18,5 +18,13 @@
     <ClCompile Include="03_practice.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Roll.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Roll.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
