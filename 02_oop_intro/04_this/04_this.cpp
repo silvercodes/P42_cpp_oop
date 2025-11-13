@@ -232,15 +232,6 @@ int main()
     s.render();
 }
 
-
-
-
-
-
-
-
-
-
 #endif // PRACTICE_1
 
 
