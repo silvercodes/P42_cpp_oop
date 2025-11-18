@@ -130,11 +130,6 @@ int main()
 
 
 
-
-
-
-
-
 #endif // PRACTICE_1
 
 
