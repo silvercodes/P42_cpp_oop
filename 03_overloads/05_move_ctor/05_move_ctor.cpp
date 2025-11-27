@@ -248,9 +248,4 @@ int main()
 
 	/*Student a{};
 	a = generate();*/
-
-
-
-	
-
 }
