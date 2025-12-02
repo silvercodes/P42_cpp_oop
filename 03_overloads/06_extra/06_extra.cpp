@@ -277,16 +277,33 @@
 
 #pragma region << >>
 
-
-
 class Point
 {
+private:
+	int x{};
+	int y{};
+public:
+	Point(int x = 0, int y = 0):
+		x{ x }, y{ y }
+	{ }
 
+	friend std::ostream& operator<<(std::ostream&, const Point&);
+	friend std::istream& operator>>(std::istream&, Point&);
 };
 
-std::ostream& operator<<(const std::ostream& out, const Point& p)
+std::ostream& operator<<(std::ostream& out, const Point& p)
 {
+	out << '(' << p.x << ';' << p.y << ")\n";
 
+	return out;
+}
+
+std::istream& operator>>(std::istream& in, Point& p)
+{
+	in >> p.x;
+	in >> p.y;
+
+	return in;
 }
 
 int main()
@@ -294,8 +311,14 @@ int main()
 	/*std::ostream*/
 	// cout << 34;
 
-	Point a{};
-	std::cout << a << '\n';
+	/*Point a{3, 4};
+	std::cout << a << '\n';*/
+
+	Point p;
+	std::cin >> p;
+	std::cout << p;
+
+	
 }
 
 
