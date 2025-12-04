@@ -125,9 +125,14 @@
   <ItemGroup>
     <ClCompile Include="02_class_templates.cpp" />
     <ClCompile Include="Container.cpp" />
+    <ClCompile Include="overloads.cpp" />
+    <ClCompile Include="Point.cpp" />
+    <ClCompile Include="templates.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Container.h" />
+    <ClInclude Include="overloads.h" />
+    <ClInclude Include="Point.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

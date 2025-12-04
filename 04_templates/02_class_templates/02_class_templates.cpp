@@ -1,19 +1,27 @@
 #include <iostream>
 #include "Container.h"
-
-
-template<typename T, typename K>
-int func()
-{
-
-}
-
+#include "Point.h"
 
 int main()
 {
-    Container<int> a{};
-    Container<std::string> b{};
+	//Container<int> a{};
+	//a.render();
 
-    func<Container<int>, Container<std::string>>();
+	//Container<double> b{};
+
+	//Container<int*> c{};
+	//c.render();
+
+	Container<Point> d{};
+
+	Container<Point> e{ d };
+	// e.render();
+	// e.erase();
+	// e.render();
+
+	e[1] = Point{ 3, 4 };
+	e.render();
+
+
 }
 
