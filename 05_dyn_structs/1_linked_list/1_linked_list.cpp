@@ -12,4 +12,9 @@ int main()
     a.push(17);
 
     a.render();
+
+    List<int> b{ a };
+    b.render();
+    b.pushToHead(101);
+    b.render();
 }

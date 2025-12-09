@@ -18,10 +18,46 @@ public:
 	{ }
 
 	// copy ctor
+	List<T>(const List<T>& obj):
+		head{ nullptr },
+		tail{ nullptr },
+		count{ 0 }
+	{
+		if (obj.isEmpty())
+			return;
+
+		ListItem<T>* objCurrent{ obj.head };
+		ListItem<T>* newItem{ nullptr };
+		ListItem<T>* prev{ nullptr };
+
+		for (int i{}; i < obj.count; ++i)
+		{
+			newItem = new ListItem<T>{ *objCurrent };
+			this->tail = newItem;
+
+			if (i == 0)
+			{
+				this->head = newItem;
+			}
+			else
+			{
+				prev->setNext(newItem);
+			}
+
+			prev = newItem;
+			objCurrent = objCurrent->getNext();
+		}
+
+		this->count = obj.getCount();
+	}
 	// operator= copy
 	// getCount()
+	int getCount() const
+	{
+		return this->count;
+	}
 	// isEmpty()
-	bool isEmpty()
+	bool isEmpty() const
 	{
 		return count == 0;
 	}
@@ -39,6 +75,19 @@ public:
 		++this->count;
 	}
 	// add Item to head
+	void pushToHead(T val)
+	{
+		ListItem<T>* newItem = new ListItem<T>{ val };
+
+		if (this->isEmpty())
+			this->tail = newItem;
+		else
+			newItem->setNext(this->head);
+
+		this->head = newItem;
+
+		++this->count;
+	}
 	// operator[]
 	// insert(T val, int index)
 	// remove
