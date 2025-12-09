@@ -10,6 +10,16 @@ private:
 	ListItem<T>* tail;
 	int count;
 
+	ListItem<T>* find(int index)
+	{
+		ListItem<T>* current = this->head;
+
+		for (int i{}; i < index; ++i)
+			current = current->getNext();
+
+		return current;
+	}
+
 public:
 	List<T>():
 		head{ nullptr },
@@ -90,6 +100,34 @@ public:
 	}
 	// operator[]
 	// insert(T val, int index)
+	void insert(T val, int index)
+	{
+		if (index > count)
+			return;
+
+		if (index == count)
+		{
+			this->push(val);
+			return;
+		}
+
+		if (index == 0)
+		{
+			this->pushToHead(val);
+			return;
+		}
+
+		ListItem<T>* newItem = new ListItem<T>{ val };
+
+		ListItem<T>* prev = this->find(index - 1);
+
+		ListItem<T>* next = prev->getNext();
+
+		prev->setNext(newItem);
+		newItem->setNext(next);
+
+		++this->count;
+	}
 	// remove
 	// render()
 	void render()

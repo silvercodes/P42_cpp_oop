@@ -17,4 +17,7 @@ int main()
     b.render();
     b.pushToHead(101);
     b.render();
+
+    b.insert(999, 2);
+    b.render();
 }
