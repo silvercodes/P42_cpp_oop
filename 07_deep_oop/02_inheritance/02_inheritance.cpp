@@ -244,49 +244,120 @@
 
 
 
-class Point
-{
-public:
-	int x;
-	int y;
-	Point(int x, int y) :
-		x{ x },
-		y{ y }
-	{ }
-	~Point()
-	{
-		std::cout << "Point dtor\n";
-	}
-};
-
-class Unit
-{
-private:
-	int hp;
-	Point* position;
-
-public:
-	Unit(int hp, const Point& p):
-		hp{hp},
-		position{ new Point { p } }
-	{ }
-
-	~Unit()
-	{
-		if (this->position != nullptr)
-			delete position;
-	}
-};
-
-int main()
-{
-	Unit a{ 100, {3, 4} };
-}
+//class Point
+//{
+//public:
+//	int x;
+//	int y;
+//	Point(int x, int y) :
+//		x{ x },
+//		y{ y }
+//	{ }
+//	~Point()
+//	{
+//		std::cout << "Point dtor\n";
+//	}
+//};
+//
+//class Unit
+//{
+//private:
+//	int hp;
+//	Point* position;
+//
+//public:
+//	Unit(int hp, const Point& p):
+//		hp{hp},
+//		position{ new Point { p } }
+//	{ }
+//
+//	~Unit()
+//	{
+//		if (this->position != nullptr)
+//			delete position;
+//	}
+//};
+//
+//int main()
+//{
+//	Unit a{ 100, {3, 4} };
+//}
 
 
 #pragma endregion
 
 
+#pragma region specificators
+
+class Base
+{
+public:
+	int _public{ 11 };
+private:
+	int _private{ 22 };
+protected:
+	int _protected{ 33 };
+};
+
+class Child : private Base
+{
+public:
+	void f()
+	{
+		std::cout << this->_public;
+		std::cout << this->_protected;
+		// std::cout << this->_private;		// ERROR
+	}
+};
+
+class Item : public Child
+{
+public:
+	void f2()
+	{
+		this->
+	}
+};
+
+int main()
+{
+	Base base{};
+	Child child{};
+	child.f();
+	
+	
+}
+
+
+
+// Модификаторы наследования
+ 
+// ===== PUBLIC (открытое, публичное наследование)
+// ------------------------
+// Parent			Child
+// ------------------------
+// public			public
+// private			------
+// protected        protected
+
+// ===== PRIVATE (приватное, закрытое наследование)
+// ------------------------
+// Parent			Child
+// ------------------------
+// public			private
+// private			-------
+// protected		private
+
+// ===== PROTECTED (защищённое наследование)
+// ------------------------
+// Parent			Child
+// ------------------------
+// public			protected
+// private			-------
+// protected		protected
+
+
+#pragma endregion
 
 
 
