@@ -490,11 +490,7 @@
 
 #include <functional>
 
-std::function<void()> ptr = []() {std::cout << 4;};
-
-
-
-
+// std::function<void()> ptr = []() {std::cout << 4;};
 
 #pragma endregion
 
